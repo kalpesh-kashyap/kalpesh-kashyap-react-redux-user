@@ -1,23 +1,22 @@
-import { Types } from "../actions/items";
+import { Types } from "../actions/users";
 
 const defaultState = {
-  items: [],
+  users: [],
 };
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case Types.FETCH_USERS: {
-      const { items } = state;
+      const { users } = state;
 
-      items.push(action.payload);
+      users.push(action.payload);
 
-      return { ...state, items };
+      return { ...state, users };
     }
-
-    case Types.DELETE_USERS: {
-      return state;
+    case Types.DELETE_USERS:
+    case Types.USER_SET_PROPS: {
+      return action.payload;
     }
-
     default:
       return state;
   }

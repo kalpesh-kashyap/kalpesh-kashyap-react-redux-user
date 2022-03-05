@@ -28,6 +28,7 @@
   "homepage": "https://github.com/manishaggarwalm/react-redux-saga-boilerplate#readme",
   "dependencies": {
     "bootstrap": "^5.1.3",
+    "ramda": "^0.28.0",
     "react": "^16.13.1",
     "react-bootstrap": "^2.2.0",
     "react-dom": "^16.13.1",

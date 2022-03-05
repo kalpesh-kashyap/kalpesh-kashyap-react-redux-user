@@ -1,10 +1,7 @@
 import { all, delay } from "@redux-saga/core/effects";
 
-function* exampleSaga() {
-  yield delay(10);
-  console.log("Example saga reached");
-}
+import userSaga from './users';
 
 export default function* rootSaga() {
-  yield all([exampleSaga()]);
+  yield all([userSaga()]);
 }
