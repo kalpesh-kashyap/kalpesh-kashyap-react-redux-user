@@ -1,18 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import {Card, Button} from "react-bootstrap";
+import {useDispatch, useSelector} from 'react-redux';
+import {prop} from 'ramda';
+import * as action from '../../store/actions/users'
 
-const UserDetails = ()=>{
+const UserDetails = () => {
+    const dispatch = useDispatch();
+    const {name, email, phone, address, id} = useSelector(prop('userDetails'));
+    const {timer, setTimer} = useState(20);
+    const deleteHandler = () => {
+        dispatch(action.deleteUser(id))
+    }
+
     return (
         <Card className="text-center">
-            <Card.Header>Featured</Card.Header>
             <Card.Body>
-                <Card.Title>Special title treatment</Card.Title>
-                <Card.Text>
-                    With supporting text below as a natural lead-in to additional content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>{email}</Card.Text>
+                <Card.Text>{phone}</Card.Text>
+                <Card.Text>{Object.values(address).join(',')}</Card.Text>
+                <Button variant="primary" onClick={deleteHandler}>Delete User</Button>
             </Card.Body>
-            <Card.Footer className="text-muted">2 days ago</Card.Footer>
         </Card>
     )
 }
